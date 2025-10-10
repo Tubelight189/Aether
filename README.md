@@ -1,50 +1,80 @@
-# Welcome to your Expo app 👋
+# Aether: AI-Powered Disaster Response
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![Aether App Banner](https://i.imgur.com/your-banner-image-url.png) 
+[cite_start]**Aether is a sophisticated disaster response and emergency reporting mobile application built for the Thales Hackathon 2025 under the "AI-Powered Solutions" theme.** [cite: 255]
 
-## Get started
+[cite_start]It leverages cutting-edge AI to provide real-time hazard analysis, bridging the gap between traditional emergency systems and modern disaster management technology. [cite: 9]
 
-1. Install dependencies
+### 🎥 [Watch the Video Demo](https://your-video-link-here.com) | [cite_start]📱 [Download the App](https://drive.google.com/file/d/1qLC06mSvDj2qQiqUcUnX29vRp9aG-_1Q/view?usp=sharing) [cite: 280]
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🌟 Key Features
 
-   ```bash
-   npx expo start
-   ```
+* [cite_start]**AI-Powered Analysis:** Utilizes Google Gemini to instantly classify damage from user-submitted photos into 8 distinct hazard types. [cite: 11, 36]
+* [cite_start]**Real-time Dashboard:** A live feed of nearby dangers, with color-coded severity indicators and automatic updates powered by Firebase Firestore. [cite: 78, 79]
+* [cite_start]**Multi-modal Reporting:** Users can submit reports using their camera or by uploading from their gallery, complete with precise GPS location and reverse geocoding for a street address. [cite: 13, 64, 68, 69]
+* [cite_start]**Automated Safety Protocols:** The AI automatically generates relevant safety guidelines based on the classified hazard, providing users with actionable intelligence. [cite: 14, 47]
+* [cite_start]**Interactive Maps:** Each report includes an interactive map view showing the exact location of the hazard. [cite: 88]
+* [cite_start]**Live News Feed:** An integrated news section, powered by the NewsAPI, keeps users informed with the latest relevant headlines. [cite: 83]
 
-In the output, you'll find options to open the app in a
+## 📸 Screenshots
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+<p float="left">
+  <img src="https://i.imgur.com/your-screenshot-1-url.png" width="200" />
+  <img src="https://i.imgur.com/your-screenshot-2-url.png" width="200" />
+  <img src="https://i.imgur.com/your-screenshot-3-url.png" width="200" />
+  <img src="https://i.imgur.com/your-screenshot-4-url.png" width="200" />
+</p>
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🛠️ Tech Stack
 
-When you're ready, run:
+* [cite_start]**Frontend:** React Native, Expo [cite: 16]
+* [cite_start]**Routing:** Expo Router [cite: 19]
+* [cite_start]**State Management:** Zustand [cite: 66]
+* [cite_start]**Backend & Database:** Firebase Authentication & Cloud Firestore [cite: 26]
+* [cite_start]**Image Storage:** Cloudinary [cite: 28]
+* [cite_start]**AI & Machine Learning:** Google Gemini API [cite: 32]
+* [cite_start]**Geolocation:** Expo Location, TrueWay Geocoding API [cite: 69]
+* [cite_start]**News:** NewsAPI [cite: 83]
 
-```bash
-npm run reset-project
-```
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🚀 Setup and Installation
 
-## Learn more
+**Prerequisites:**
+* Node.js and npm installed.
+* Expo Go app on your mobile device.
 
-To learn more about developing your project with Expo, look at the following resources:
+**Instructions:**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/your-username/aether-hackathon.git](https://github.com/your-username/aether-hackathon.git)
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd aether-hackathon
+    ```
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+4.  **Create a `.env` file** in the root of the project and add your API keys:
+    ```
+    EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_key
+    EXPO_PUBLIC_GEO_API_KEY=your_geocoding_key
+    ```
+5.  **Start the development server:**
+    ```bash
+    npx expo start
+    ```
+6.  **Scan the QR code** with the Expo Go app on your phone to run the application.
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## 🧑‍💻 Author
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+* **Arnav Adarsh** - [GitHub Profile](https://github.com/your-username)
