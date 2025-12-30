@@ -39,7 +39,7 @@ const SignupPage = () => {
       // If using React Navigation:
       // navigation.replace('Home'); // Replace 'Home' or 'Login'
       // If using Expo Router:
-      router.replace('/');
+      router.replace('../(tabs)/news'); 
     } catch (error) {
       console.log("Signup Error:", error.message);
       Alert.alert('Signup Failed', error.message); // Provide user feedback

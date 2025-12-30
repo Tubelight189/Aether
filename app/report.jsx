@@ -9,18 +9,13 @@ import * as FileSystem from "expo-file-system/legacy";
 import * as Location from "expo-location";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { doc, setDoc } from 'firebase/firestore';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
-  Alert,
-  Button,
-  FlatList,
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+  Alert, Button, FlatList,
+  Image, Text, TextInput,
+  TouchableOpacity, View
+} from 'react-native';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { auth, db } from '../config/firebase.config'; // Adjust path to your config
 import { usePhotoStore } from "../store/photoStore";
@@ -45,7 +40,39 @@ export default function ReportScreen() {
   const [parsedAnalysisResult, setParsedAnalysisResult] = useState(null);
   const [manualLocation, setManualLocation] = useState("");
 
+  
+//   useEffect(() => {
+//     async function requestPermissions() {
+//       const { status } = await Notifications.requestPermissionsAsync();
+//       if (status !== 'granted') {
+//         alert('Permission for notifications was not granted!');
+//       }
+//     }
+//     requestPermissions();
+//   }, []);
 
+//   Notifications.setNotificationHandler({
+//     handleNotification: async () => ({
+//       shouldPlaySound: false,
+//       shouldSetBadge: false,
+//       shouldShowBanner: true,
+//       shouldShowList: true,
+//     }),
+//   });
+
+// async function schedulePushNotification(text) {
+//   await Notifications.scheduleNotificationAsync({
+//     content: {
+//       title: "Danger Nearby! 🚨",
+//       body: text|| 'A new danger report has been submitted nearby.',
+//       data: { data: 'goes here', test: { test1: 'more data' } },
+//     },
+//     trigger: {
+//       type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+//       seconds: 0,
+//     },
+//   });
+// }
   useEffect(() => {
     // This runs ONCE to set the very first photo
     setInitialPhoto(photoUri);
@@ -133,11 +160,11 @@ export default function ReportScreen() {
     setTime(new Date(location?.timestamp).toString());
   }
 
- const analyzeWithGemini = async (photosToAnalyze, userDescription) => {
+  const analyzeWithGemini = async (photosToAnalyze, userDescription) => {
   const genAI = new GoogleGenerativeAI(
     process.env.EXPO_PUBLIC_GEMINI_API_KEY
   );
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
   const imageParts = await Promise.all(
     photosToAnalyze.map(async (uri) => {
@@ -344,8 +371,9 @@ const handleSubmit = async () => {
 
 
     Alert.alert("Success", "Your report has been submitted successfully!");
+    // await schedulePushNotification(reportToSave.human_readable_summary);
     clearPhotos();
-    router.replace("/");
+    router.push("/(tabs)/danger");
   } catch (error) {
     console.error("Submission failed: ", error);
     Alert.alert("Error", `Failed to submit report: ${error.message}`);
@@ -466,9 +494,9 @@ const handleSubmit = async () => {
               placeholderTextColor="grey"
               multiline={true}
               value={
-                 manualLocation
+                manualLocation
               }
-               onChangeText={(text) => setManualLocation(text)} 
+              onChangeText={(text) => setManualLocation(text)} 
               valuecolor="white"
               // editable={false}
               style={{

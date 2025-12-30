@@ -1,15 +1,27 @@
 // app/_layout.jsx
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
+import * as Notifications from 'expo-notifications';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useAuth } from '../hooks/useAuth'; // We will create this custom hook next
+import { useReportNotifications } from '../hooks/useReportNotifications';
+
 // This is your main layout for the entire app
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+    shouldShowBanner: true, // This makes the popup appear!
+    shouldShowList: true,
+  }),
+});
 const RootLayout = () => {
   const { user, initializing } = useAuth();
   const segments = useSegments();
   const router = useRouter();
-
+  useReportNotifications();
+  
   useEffect(() => {
     // If initialization is complete, proceed with routing logic
     if (!initializing) {
@@ -34,13 +46,12 @@ const RootLayout = () => {
       </View>
     );
   }
-
   // Render the actual navigation stack
   return (
        <ActionSheetProvider>
 {/* <View style={{marginTop:35,backgroundColor:"black",color:"black",}}/> */}
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
+      <Stack.Screen name="(tabs)" />
       <Stack.Screen name="(auth)" />
       {/* <Stack.Screen name="/camera" />
       <Stack.Screen name="/imagePicker" />

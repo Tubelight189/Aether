@@ -1,15 +1,15 @@
 // LoginPage.js
 import { useState } from 'react';
 import {
-    Alert, // Import Alert for user feedback
-    KeyboardAvoidingView,
-    Platform,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Alert, // Import Alert for user feedback
+  KeyboardAvoidingView,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
 // Use useNavigation from @react-navigation/native if using React Navigation
 // Or useRouter from 'expo-router' if using Expo Router
@@ -29,7 +29,7 @@ const LoginPage = () => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("User Signed in: ", userCredential.user.email);
     Alert.alert('Success', 'Logged in successfully!');
-    router.replace('/'); 
+    router.replace('../(tabs)/news'); 
   } catch (error) {
     console.error("Login Error:", error);
     Alert.alert('Login Failed', String(error.message || error.code || "Unknown error"));

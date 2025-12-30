@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from "react-native";
-import { db } from '../config/firebase.config';
+import { db } from '../../config/firebase.config';
 // import news from "../globalContext/news.json";
 export default function Index() {
   const { showActionSheetWithOptions } = useActionSheet();
@@ -145,6 +145,8 @@ export default function Index() {
         alignItems: "center",
         backgroundColor: "black",
         color: "black",
+        padding: 10,
+        paddingTop:15
       }}
     >
       <View style={{
@@ -192,9 +194,9 @@ export default function Index() {
             
             ({ item }) => 
               {
-                 const imageUrl = item.images?.[0];
-                 console.log(imageUrl);
-                 console.log(item);
+                const imageUrl = item.images?.[0];
+                console.log(imageUrl);
+                console.log(item);
                 return(
                   <TouchableOpacity onPress={() => {router.push({pathname:'/reportPage',params: { item: JSON.stringify(item) }}),console.log("item passed:",item)}}>
 
@@ -261,49 +263,6 @@ export default function Index() {
 
       <View style={{ backgroundColor: "red", height:0 }} />
 
-      {/* News Section */}
-      <View style={{ flex: 1, padding: 20, backgroundColor: "black",marginTop:0 }}>
-        <Text
-          style={{
-            fontSize: 20,
-            marginBottom: 10,
-            color: "white",
-            fontWeight: "bold",
-            marginTop: 0,
-          }}
-        >
-          Latest News
-        </Text>
-        <FlatList
-          data={articles}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <TouchableOpacity onPress={()=>router.push({pathname:"/newsPage", params: { news: JSON.stringify(item) }})}>
-
-            <View
-              style={{
-                marginBottom: 15,
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
-              <Text
-                style={{ fontSize: 18, color: "white", fontWeight: "bold" }}
-              >
-                {item.title}
-              </Text>
-              <Image
-                source={{ uri: item.urlToImage }}
-                style={{ width: "100%", height: 200, borderRadius: 10 }}
-                contentFit="cover"
-              />
-              <Text style={{ color: "lightgray" }}>{item.description}</Text>
-            </View>
-        </TouchableOpacity>
-          )}
-        />
-      </View>
     </View>
   );
 }

@@ -1,16 +1,17 @@
+import { useRouter } from "expo-router";
 import { useLocalSearchParams } from "expo-router/build/hooks";
 import { deleteDoc, doc } from 'firebase/firestore';
 import { Alert, FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { db } from '../config/firebase.config';
-import LeafletMap from "./map";
 
+import LeafletMap from "./map";
 const ReportPage = () => {
  let { item } = useLocalSearchParams();
 item = item ? JSON.parse(item) : null;
 
 // console.log("Report item:", item.longitude);
 
-
+const router = useRouter();
 const deleteReport = async (reportId) => {
   try {
     // 1. Create a reference to the document you want to delete
@@ -60,13 +61,16 @@ const deleteReport = async (reportId) => {
 // console.log(item.images)
   return (
     <ScrollView style={styles.container}>
-         <View style={{
+      <View style={{
         marginTop: 55,
         color: "black",
       }}/>
+      <TouchableOpacity onPress={()=>router.push("/(tabs)/help")} style={{ backgroundColor: '#CC6600', paddingVertical: 8,margin: 10, borderRadius: 12,alignItems: 'center',}}>
+        <Text style={styles.deleteButtonText}>HelpLine Number</Text>
+      </TouchableOpacity>
       {/* Header Card */}
         <Text style={styles.title}>{item.damage_type ?? "No Type"}</Text>
-     <View style={{ marginBottom: 20 }}>
+      <View style={{ marginBottom: 20 }}>
   <FlatList
     data={item.images}
     horizontal
@@ -128,9 +132,11 @@ const deleteReport = async (reportId) => {
           longitude={item.longitude}
         />
 
-     <TouchableOpacity onPress={handleDeletePress} style={{ backgroundColor: '#32D74B', paddingVertical: 8,marginTop: -10, borderBottomLeftRadius: 12,borderBottomRightRadius: 12,alignItems: 'center',}}>
+     <TouchableOpacity onPress={handleDeletePress} style={{ backgroundColor: '#32D74B', paddingVertical: 8,marginTop: 10, borderBottomLeftRadius: 12,borderBottomRightRadius: 12,alignItems: 'center',}}>
         <Text style={styles.deleteButtonText}>SOLVED</Text>
       </TouchableOpacity>
+     
+   
     </ScrollView>
   );
 };
